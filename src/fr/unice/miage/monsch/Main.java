@@ -3,6 +3,8 @@ package fr.unice.miage.monsch;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        DirectoryPrinter directoryPrinter = new DirectoryPrinter();
+        CustomFilter filter = new CustomFilter("");
+        directoryPrinter.printFiles(".", filter,  "");
     }
 }
