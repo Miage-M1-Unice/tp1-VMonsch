@@ -1,13 +1,13 @@
-package fr.unice.miage.monsch;
+package fr.unice.miage.monsch.un.a;
 
 import java.io.File;
 import java.io.FilenameFilter;
 
-public class CustomFilter implements FilenameFilter {
+public class CustomExternalFilter implements FilenameFilter {
 
     private String nameFilter;
 
-    public CustomFilter(String nameFilter) {
+    public CustomExternalFilter(String nameFilter) {
         this.nameFilter = nameFilter;
     }
 
