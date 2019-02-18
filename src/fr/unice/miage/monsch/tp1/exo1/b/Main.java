@@ -1,4 +1,4 @@
-package fr.unice.miage.monsch.un.b;
+package fr.unice.miage.monsch.tp1.exo1.b;
 
 public class Main {
 

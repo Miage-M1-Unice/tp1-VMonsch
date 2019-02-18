@@ -1,4 +1,4 @@
-package fr.unice.miage.monsch.un.a;
+package fr.unice.miage.monsch.tp1.exo1.a;
 
 import java.io.File;
 import java.io.FilenameFilter;
