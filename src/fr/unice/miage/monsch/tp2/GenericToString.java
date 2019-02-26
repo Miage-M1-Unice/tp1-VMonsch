@@ -9,6 +9,8 @@ package fr.unice.miage.monsch.tp2;
 import java.awt.*;
 import java.lang.reflect.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GenericToString {
     public static String toString(Object root, int depth) throws IllegalAccessException {
@@ -21,7 +23,7 @@ public class GenericToString {
 
             string += "[";
 
-            for (Field field : root.getClass().getFields()) {
+            for (Field field : getAllFields(root.getClass())) {
                 string += " ";
                 string += field.getName();
                 string += "=";
@@ -42,6 +44,9 @@ public class GenericToString {
                         }
                         string += "}";
                     }
+                    else {
+                        string += toString(field.get(root), depth -1);
+                    }
                 } else {
                     string += field.get(root);
                 }
@@ -49,15 +54,33 @@ public class GenericToString {
                 string += "; ";
             }
 
-            string += "]";
+            string += "]\n";
 
             return string;
         }
     }
 
+    public static ArrayList<Field> getAllFields(Class<?> type) {
+        ArrayList<Field> fields = new ArrayList<>();
+
+        for (Field field : type.getFields()) {
+            if (!fields.contains(field)) {
+                fields.add(field);
+            }
+        }
+
+        for (Field field : type.getDeclaredFields()) {
+            if (!fields.contains(field)) {
+                fields.add(field);
+            }
+        }
+
+        return fields;
+    }
+
     public static void main(String[] args) throws IllegalAccessException {
         Polygon polygon = new Polygon(new int[]{10, 20, 30}, new int[]{20, 30, 40}, 3);
         polygon.getBounds();
-        System.out.println(toString(polygon, 3));
+        System.out.println(toString(polygon, 2));
     }
 }
